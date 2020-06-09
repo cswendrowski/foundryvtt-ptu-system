@@ -1,0 +1,33 @@
+{
+  "name": "Pokemon Tabletop United",
+  "title": "ptu",
+  "description": "A Pen and Paper Roleplaying Game Set in the World of Pokemon",
+  "version": "0.0.1",
+  "minimumCoreVersion": "0.6.2",
+  "compatibleCoreVersion": "0.6.2",
+  "templateVersion": 2,
+  "author": "Cody Swendrowski",
+  "esmodules": ["module/ptu.js"],
+  "styles": [
+    "css/ptu.css",
+    "css/pokemon-gameboy-css.css"
+  ],
+  "scripts": [],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "exp",
+  "url": "https://gitlab.com/asacolips-projects/foundry-mods/archmage",
+  "manifest": "https://gitlab.com/asacolips-projects/foundry-mods/archmage/raw/master/system.json",
+  "download": "https://gitlab.com/asacolips-projects/foundry-mods/archmage/-/archive/1.4.3/archmage-master.zip",
+  "initiative": "",
+  "license": "LICENSE.txt"
+}
