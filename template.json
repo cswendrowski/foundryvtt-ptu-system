@@ -8,8 +8,8 @@
           "min": 0,
           "max": 10
         },
-        "power": {
-          "value": 5,
+        "exp": {
+          "value": 0,
           "min": 0,
           "max": 5
         }
@@ -21,22 +21,29 @@
       "attributes": {
         "level": {
           "value": 1
-        }
+        },
+        "type1": {
+          "value": ""
+        },
+        "type2": {
+          "value": ""
+        },
+
       },
       "abilities": {
-        "str": {
+        "atk": {
           "value": 10
         },
-        "dex": {
+        "def": {
           "value": 10
         },
-        "con": {
+        "spatk": {
           "value": 10
         },
-        "int": {
+        "spdef": {
           "value": 10
         },
-        "wis": {
+        "speed": {
           "value": 10
         },
         "cha": {
@@ -46,7 +53,7 @@
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": ["item", "ability", "move"],
     "templates": {
       "base": {
         "description": ""
@@ -57,12 +64,23 @@
       "quantity": 1,
       "weight": 0
     },
-    "feature": {
-      "templates": ["base"]
+    "ability": {
+      "frequency": "",
+      "action": "",
+      "trigger": "",
+      "target": "",
+      "effect": ""
     },
-    "spell": {
-      "templates": ["base"],
-      "spellLevel": 1
+    "move": {
+      "type": "",
+      "frequency": "",
+      "ac": "",
+      "damageBase": "",
+      "class": "",
+      "range": "",
+      "effect": "",
+      "contestType": "",
+      "contestEffect": ""
     }
   }
 }

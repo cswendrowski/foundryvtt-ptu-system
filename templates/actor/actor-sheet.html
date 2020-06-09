@@ -1,38 +1,57 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
+<form class="{{cssClass}} flexcol framed" autocomplete="off">
 
     {{!-- Sheet Header --}}
     <header class="sheet-header">
         <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
         <div class="header-fields">
-            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-            {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-            use both the "grid" and "grid-Ncol" class where "N" can be any number
-            from 1 to 12 and will create that number of columns.  --}}
-            <div class="resources grid grid-2col">
-              {{!-- "flex-group-center" is also defined in the _grid.scss file
-              and it will add a small amount of padding, a border, and will
-              center all of its child elements content and text. --}}
-              <div class="resource flex-group-center">
+            <div class="resources">
+
+              <!-- <div class="resource flex-group-center">
                   <label for="data.health.value" class="resource-label">Health</label>
-                  <div class="resource-content flexrow flex-center flex-between">
-                    <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
-                    <span> / </span>
-                    <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
-                  </div>
+
+              </div> -->
+              <div class="stats">
+                <h2><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h2>
+                <div class="options">
+                    <label for="progressBar">HP:</label>
+                    <div class="progress-bar p{{data.health.percent}}" id="progressBar"></div>
+                </div>
+                <div class="resource-content flexrow flex-group-left hp-info">
+                  <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
+                  <span> / </span>
+                  <input type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
+                </div>
               </div>
-              <div class="resource flex-group-center">
+              <!-- <div class="resource flex-group-center">
                   <label for="data.power.value" class="resource-label">Power</label>
                   <div class="resource-content flexrow flex-center flex-between">
                     <input type="text" name="data.power.value" value="{{data.power.value}}" data-dtype="Number"/>
                     <span> / </span>
                     <input type="text" name="data.power.max" value="{{data.power.max}}" data-dtype="Number"/>
                   </div>
-              </div>
+              </div> -->
           </div>
-          {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-          use both the "grid" and "grid-Ncol" class where "N" can be any number
-          from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities grid grid-3col">
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <ul class="sheet-tabs tabs framed no-hd buttons compact" data-group="primary">
+        <li><button class="item" data-tab="details">Details</button></li>
+        <li><button class="item" data-tab="description">Dex Entry</button></li>
+        <li><button class="item" data-tab="items">Items</button></li>
+        <li><button class="item" data-tab="features">Moves</button></li>
+    </ul>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body framed no-hd">
+
+        {{!-- Biography Tab --}}
+        <div class="tab biography" data-group="primary" data-tab="description">
+            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+        </div>
+
+        <div class="tab details" data-group="primary" data-tab="details">
+          <div class="abilities">
             {{#each data.abilities as |ability key|}}
               <div class="ability flexrow flex-group-center">
                 <label for="data.abilities.{{key}}.value" class="resource-label">{{key}}</label>
@@ -41,23 +60,6 @@
               </div>
             {{/each}}
           </div>
-        </div>
-    </header>
-
-    {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">Description</a>
-        <a class="item" data-tab="items">Items</a>
-        <a class="item" data-tab="features">Features</a>
-        <a class="item" data-tab="spells">Spells</a>
-    </nav>
-
-    {{!-- Sheet Body --}}
-    <section class="sheet-body">
-
-        {{!-- Biography Tab --}}
-        <div class="tab biography" data-group="primary" data-tab="description">
-            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
         </div>
 
         {{!-- Owned Items Tab --}}

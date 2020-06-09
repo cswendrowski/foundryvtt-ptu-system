@@ -32,6 +32,8 @@ export class ptuActor extends Actor {
       // Calculate the modifier using d20 rules.
       ability.mod = Math.floor((ability.value - 10) / 2);
     }
+
+    data.health.percent = Math.round((data.health.value / data.health.max) * 100);
   }
 
 }

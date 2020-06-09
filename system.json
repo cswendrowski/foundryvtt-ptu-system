@@ -1,8 +1,8 @@
 {
-  "name": "Pokemon Tabletop United",
-  "title": "ptu",
+  "name": "ptu",
+  "title": "Pokemon Tabletop United",
   "description": "A Pen and Paper Roleplaying Game Set in the World of Pokemon",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "minimumCoreVersion": "0.6.2",
   "compatibleCoreVersion": "0.6.2",
   "templateVersion": 2,
@@ -10,7 +10,7 @@
   "esmodules": ["module/ptu.js"],
   "styles": [
     "css/ptu.css",
-    "css/pokemon-gameboy-css.css"
+    "css/main.css"
   ],
   "scripts": [],
   "packs": [],
