@@ -25,9 +25,9 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "exp",
-  "url": "https://gitlab.com/asacolips-projects/foundry-mods/archmage",
-  "manifest": "https://gitlab.com/asacolips-projects/foundry-mods/archmage/raw/master/system.json",
-  "download": "https://gitlab.com/asacolips-projects/foundry-mods/archmage/-/archive/1.4.3/archmage-master.zip",
+  "url": "https://github.com/cswendrowski/foundryvtt-ptu-system",
+  "manifest": "https://raw.githubusercontent.com/cswendrowski/foundryvtt-ptu-system/master/system.json",
+  "download": "https://github.com/cswendrowski/foundryvtt-ptu-system/archive/master.zip",
   "initiative": "",
   "license": "LICENSE.txt"
 }
