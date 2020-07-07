@@ -2,16 +2,16 @@
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class ptuActorSheet extends ActorSheet {
+export class PTUActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["ptu", "sheet", "actor"],
-      template: "systems/ptu/templates/actor/actor-sheet.html",
+      classes: ["pokemontabletopunited", "sheet", "actor"],
+      template: "systems/pokemontabletopunited/templates/actor/actor-sheet.html",
       width: 600,
-      height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
+      height: 630,
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "pkmn" }]
     });
   }
 
@@ -45,19 +45,7 @@ export class ptuActorSheet extends ActorSheet {
 
     // Initialize containers.
     const gear = [];
-    const features = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: []
-    };
+    const moves = [];
 
     // Iterate through items, allocating to containers
     // let totalWeight = 0;
@@ -68,22 +56,15 @@ export class ptuActorSheet extends ActorSheet {
       if (i.type === 'item') {
         gear.push(i);
       }
-      // Append to features.
-      else if (i.type === 'feature') {
-        features.push(i);
-      }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.data.spellLevel != undefined) {
-          spells[i.data.spellLevel].push(i);
-        }
+      // Append to moves.
+      else if (i.type === 'move') {
+        moves.push(i);
       }
     }
 
     // Assign and return
     actorData.gear = gear;
-    actorData.features = features;
-    actorData.spells = spells;
+    actorData.moves = moves;
   }
 
   /* -------------------------------------------- */
@@ -150,6 +131,7 @@ export class ptuActorSheet extends ActorSheet {
     delete itemData.data["type"];
 
     // Finally, create the item!
+    console.log(itemData);
     return this.actor.createOwnedItem(itemData);
   }
 

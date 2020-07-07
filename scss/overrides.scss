@@ -4,21 +4,29 @@
     background: #F8F3F8 !important;
 }
 
-form button {
+form button, #settings button {
     background: #F8F3F8 !important;
     border: none !important;
+}
+
+.sheet-tabs .item {
+    text-align: left !important;
 }
 
 h2 { 
     border-bottom: none;
 }
 
-input[type="text"], input[type="password"], input[type="datetime-local"] {
-    border: dotted;
+.sheet {
+    input[type="text"], input[type="password"], input[type="datetime-local"] {
+        border: dotted;
+    }
 }
 
+
 .sheet .sheet-header img {
-    height: 107px !important;
+    height: 109px !important;
+    widows: 109px !important;
     margin-right: 10px !important;
 }
 

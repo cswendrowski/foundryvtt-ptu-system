@@ -20,7 +20,7 @@ button, .button{
     &:hover::before{
         content: "";
         position: absolute;
-        top: 0;
+        top: 2px;
         left: -2px;
 
         @include arrow-right;
@@ -29,9 +29,18 @@ button, .button{
     &.pokemon{
         text-indent: -1000em;
         width: 100%;
-        background: url('./images/pkmn.png') 1em center no-repeat;
-        background-size: contain;
+        background: url('./images/pkmn.png') 1em center no-repeat !important;
+        background-size: contain !important;
+
+        &.active {
+            background: url('./images/pkmn-selected.png') 1em center no-repeat !important;
+            background-size: contain !important;
+        }
     }
+}
+
+.sheet-tabs > li > button::before {
+    top: 20%;
 }
 
 ul.buttons{

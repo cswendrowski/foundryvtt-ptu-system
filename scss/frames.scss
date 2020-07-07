@@ -77,8 +77,37 @@
         margin-top: -2em;
         padding: 1em 1em 1em 0;
     }
+}
 
-    label{
+.stats-flipped {
+    position: relative;
+    border: 4px solid $contrast;
+    border-top: none;
+    border-left: none;
+    padding: 2em;
+    margin-left: 64px;
 
+    &::after{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: inline-block;
+        content: '';
+        width: 2px;
+        height: 2px;
+        font-size: 2px;
+        color: $contrast;
+        box-shadow:
+        5em -1em 0 $contrast, 4em -1em 0 $contrast,
+        5em 0 0 $contrast, 4em 0 0 $contrast, 3em 0 0 $contrast, 2em 0 0 $contrast,
+        -1em 2em 0 $contrast, -2em 2em 0 $contrast,
+        2em 2em 0 $contrast, 2em 2em 0 $contrast,;
+    }
+
+    h2{
+        background-color: $neutral;
+        margin-left: -2em;
+        margin-top: -2em;
+        padding: 1em 1em 1em 0;
     }
 }

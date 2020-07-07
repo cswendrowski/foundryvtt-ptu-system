@@ -1,14 +1,14 @@
 // Import Modules
-import { ptuActor } from "./actor/actor.js";
-import { ptuActorSheet } from "./actor/actor-sheet.js";
-import { ptuItem } from "./item/item.js";
-import { ptuItemSheet } from "./item/item-sheet.js";
+import { PTUActor } from "./actor/actor.js";
+import { PTUActorSheet } from "./actor/actor-sheet.js";
+import { PTUItem } from "./item/item.js";
+import { PTUItemSheet } from "./item/item-sheet.js";
 
 Hooks.once('init', async function() {
 
-  game.ptu = {
-    ptuActor,
-    ptuItem,
+  game.pokemontabletopunited = {
+    PTUActor,
+    PTUItem,
     rollItemMacro
   };
 
@@ -22,14 +22,14 @@ Hooks.once('init', async function() {
   };
 
   // Define custom Entity classes
-  CONFIG.Actor.entityClass = ptuActor;
-  CONFIG.Item.entityClass = ptuItem;
+  CONFIG.Actor.entityClass = PTUActor;
+  CONFIG.Item.entityClass = PTUItem;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("ptu", ptuActorSheet, { makeDefault: true });
+  Actors.registerSheet("pokemontabletopunited", PTUActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("ptu", ptuItemSheet, { makeDefault: true });
+  Items.registerSheet("pokemontabletopunited", PTUItemSheet, { makeDefault: true });
 
   // If you need to add Handlebars helpers, here are a few useful examples:
   Handlebars.registerHelper('concat', function() {
@@ -49,7 +49,7 @@ Hooks.once('init', async function() {
 
 Hooks.once("ready", async function() {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on("hotbarDrop", (bar, data, slot) => createptuMacro(data, slot));
+  Hooks.on("hotbarDrop", (bar, data, slot) => createPTUMacro(data, slot));
 });
 
 /* -------------------------------------------- */
@@ -63,13 +63,13 @@ Hooks.once("ready", async function() {
  * @param {number} slot     The hotbar slot to use
  * @returns {Promise}
  */
-async function createptuMacro(data, slot) {
+async function createPTUMacro(data, slot) {
   if (data.type !== "Item") return;
   if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
   const item = data.data;
 
   // Create the macro command
-  const command = `game.ptu.rollItemMacro("${item.name}");`;
+  const command = `game.pokemontabletopunited.rollItemMacro("${item.name}");`;
   let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
   if (!macro) {
     macro = await Macro.create({
@@ -77,7 +77,7 @@ async function createptuMacro(data, slot) {
       type: "script",
       img: item.img,
       command: command,
-      flags: { "ptu.itemMacro": true }
+      flags: { "pokemontabletopunited.itemMacro": true }
     });
   }
   game.user.assignHotbarMacro(macro, slot);
